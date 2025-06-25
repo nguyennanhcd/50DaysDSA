@@ -31,7 +31,7 @@ func squareSort(num []int) []int {
 	return result
 }
 
-func main() {
+func Ex1() {
 	num := []int{-5, 3, 4, 6}
 	result := squareSort(num)
 	fmt.Println(result)
