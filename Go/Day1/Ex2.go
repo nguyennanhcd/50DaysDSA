@@ -11,7 +11,7 @@ func checkMono(num []int) bool {
 	isIncreasing := true
 	isDecreasing := true
 
-	for i := 0; i < len(num)-1; i++ {
+	for i := range len(num) - 1 {
 		if num[i] < num[i+1] {
 			isDecreasing = false
 		}
