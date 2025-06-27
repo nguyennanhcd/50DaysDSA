@@ -34,6 +34,17 @@ func findTheWinner(players []int, startingPosition int, k int) int {
 	return findTheWinner(newPlayers, newStartingPosition, k)
 }
 
+func findTheWinner2(n int, k int) int {
+	var josephus func(int) int
+	josephus = func(n int) int {
+		if n == 1 {
+			return 0
+		}
+		return (josephus(n-1) + k) % n
+	}
+	return josephus(n) + 1
+}
+
 func Ex2() {
 	n := 5
 	k := 2
