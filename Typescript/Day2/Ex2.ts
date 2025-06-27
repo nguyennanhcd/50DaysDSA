@@ -40,6 +40,17 @@ function findTheWinner2(n: number, k:number) {
     return josephus(n) + 1
 }
 
+function findTheWinner3(n: number, k: number) {
+    let survivor = 0
+
+    for(let i = 2; i< n +1; i++)
+    {
+        survivor = (survivor + k ) %i
+    }
+
+    return survivor +1 
+}
+
 const n = 5
 const k = 4
-console.log(findTheWinner2(5,4))
+console.log(findTheWinner3(5,4))

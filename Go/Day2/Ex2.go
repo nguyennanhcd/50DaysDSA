@@ -45,6 +45,16 @@ func findTheWinner2(n int, k int) int {
 	return josephus(n) + 1
 }
 
+func findTheWinner3(n int, k int) int {
+	survivor := 0
+
+	for i := 2; i <= n; i++ {
+		survivor = (survivor + k) % i
+	}
+
+	return survivor + 1
+}
+
 func Ex2() {
 	n := 5
 	k := 2
@@ -55,5 +65,10 @@ func Ex2() {
 	}
 
 	result := findTheWinner(players, 0, k)
+	result2 := findTheWinner2(n, k)
+	result3 := findTheWinner3(n, k)
+
 	fmt.Println("Winner is:", result)
+	fmt.Println("Winner2 is:", result2)
+	fmt.Println("Winner3 is:", result3)
 }
