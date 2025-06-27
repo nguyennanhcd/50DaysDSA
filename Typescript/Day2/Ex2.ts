@@ -28,6 +28,18 @@ function findTheWinner(n:number, k: number): number {
     return helper(arr, 0)
 }
 
+function findTheWinner2(n: number, k:number) {
+    function josephus(n: number):number {
+        if (n==1) {
+            return 0
+        }
+
+        return (josephus(n-1) +k ) %n
+    }
+
+    return josephus(n) + 1
+}
+
 const n = 5
 const k = 4
-console.log(findTheWinner(5,4))
+console.log(findTheWinner2(5,4))

@@ -28,6 +28,16 @@ def findTheWinner(n, k):
 
     return helper(arr, 0)
 
+
+def findTheWinner2(n, k):
+    def josephus(n):
+        if n== 1:
+            return 0
+        return (josephus(n-1) +k) %n
+
+    return josephus(n) +1
+
+
 n = 4
 k = 4
 result = findTheWinner(n, k)
