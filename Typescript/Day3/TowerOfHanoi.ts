@@ -21,7 +21,7 @@ function toh(N: number, from: number, aux: number, to: number) {
         return;
     }
 
-    toh(N - 1, from, to, aux);  // Note: aux và to đảo chỗ nhau
+    toh(N - 1, from, to, aux);
     console.log(`Move disc ${N} from ${from} to ${to}`);
     count++;
     toh(N - 1, aux, from, to);
