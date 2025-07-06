@@ -23,24 +23,51 @@ import (
 	"fmt"
 )
 
-func backtrack(path []int, used map[int]bool) {
-	if len(path) == 3 {
-		fmt.Println(path)
-		return
-	}
-	for i := 1; i <= 3; i++ {
-		if used[i] {
-			continue
+func permute(nums []int) [][]int {
+	result := [][]int{}
+	used := make(map[int]bool, len(nums))
+	path := []int{}
+
+	var backtrack func()
+	backtrack = func() {
+		// Base case: if path length equals input array length, add to result
+		if len(path) == len(nums) {
+			// Create a copy of path to avoid reference issues
+			pathCopy := make([]int, len(path))
+			copy(pathCopy, path)
+			result = append(result, pathCopy)
+			return
 		}
-		used[i] = true
-		path = append(path, i)
-		backtrack(path, used)
-		path = path[:len(path)-1]
-		used[i] = false
+
+		// Try each number in nums
+		for _, num := range nums {
+			if used[num] {
+				continue
+			}
+			// Mark number as used and add to path
+			used[num] = true
+			path = append(path, num)
+
+			// Recursive call
+			backtrack()
+
+			// Backtrack: remove last number and mark as unused
+			path = path[:len(path)-1]
+			used[num] = false
+		}
 	}
+
+	backtrack()
+	return result
 }
 
 func Permutation() {
-	fmt.Println("Backtracking:")
-	backtrack([]int{}, map[int]bool{})
+	// Test cases
+	nums1 := []int{1, 4}
+	fmt.Println("Input:", nums1)
+	fmt.Println("Output:", permute(nums1))
+
+	nums2 := []int{1, 4, 5}
+	fmt.Println("\nInput:", nums2)
+	fmt.Println("Output:", permute(nums2))
 }

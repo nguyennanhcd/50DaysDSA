@@ -1,6 +1,6 @@
 package main
 
 func main() {
-	// Permutation()
-	Permutation2()
+	Permutation()
+	// Permutation2()
 }

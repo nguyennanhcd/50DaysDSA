@@ -39,4 +39,4 @@ var permute = function(nums: number[]): number[][] {
 };
 
 
-
+console.log(permute([1, 4, 5]));
