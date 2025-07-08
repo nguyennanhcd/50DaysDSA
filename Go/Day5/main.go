@@ -1,5 +1,6 @@
 package main
 
 func main() {
-	subsetEx()
+	// subsetEx()
+	subsets2()
 }
