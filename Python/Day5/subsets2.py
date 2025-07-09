@@ -52,4 +52,4 @@ def subsets_with_dup(nums: list[int]) -> list[list[int]]:
     return res
 
 
-print(subsets_with_dup([1, 2, 2]))  # Example usage
+print(subsets_with_dup([1, 2, 2])) 
