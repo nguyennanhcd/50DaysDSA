@@ -25,7 +25,7 @@ These are the only two combinations.
 
 def combinationSum(candidates, target):
     res = []
-    def combinationSum(index,curr,currSum):
+    def backtrack(index,curr,currSum):
         if currSum>target:
             return
         if currSum ==target:
@@ -33,9 +33,9 @@ def combinationSum(candidates, target):
             return
         for j in range(index,len(candidates)):
             curr.append(candidates[j])   
-            combinationSum(j,curr,currSum+candidates[j])
+            backtrack(j,curr,currSum+candidates[j])
             curr.pop()
-    combinationSum(0,[],0)
+    backtrack(0,[],0)
     return res     
 
 result = combinationSum([2,3,8,9], 9)

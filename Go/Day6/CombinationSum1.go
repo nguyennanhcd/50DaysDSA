@@ -24,6 +24,39 @@ These are the only two combinations.
 
 package main
 
-func CombinationSum1() {
+import "fmt"
 
+func combineSum(candidates []int, target int) [][]int {
+	result := [][]int{}
+
+	var backtrack func(index int, curr []int, currSum int)
+
+	backtrack = func(index int, curr []int, currSum int) {
+		if currSum > target {
+			return
+		}
+		if currSum == target {
+			// Make a copy of curr before appending
+			temp := make([]int, len(curr))
+			copy(temp, curr)
+			result = append(result, temp)
+			return
+		}
+		for j := index; j < len(candidates); j++ {
+			curr = append(curr, candidates[j])
+			backtrack(j, curr, currSum+candidates[j]) // use `backtrack`, not `combineSum`
+			curr = curr[:len(curr)-1]
+		}
+	}
+
+	backtrack(0, []int{}, 0)
+	return result
+}
+
+// Example usage
+func CombinationSum1() {
+	candidates := []int{2, 3, 8, 9}
+	target := 9
+	combinations := combineSum(candidates, target)
+	fmt.Println(combinations)
 }
