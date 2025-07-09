@@ -9,10 +9,16 @@ The solution set must not contain duplicate subsets. Return the solution in any 
 def subsets(nums):
     output = []
     def helper(nums, i, subset):
+        #base case
         if i == len(nums):
             output.append(subset.copy())
             return
+
+        #recursive case
+        #exclude case
         helper(nums, i+1, subset)
+
+        #include case
         subset.append(nums[i])
         helper(nums, i+1, subset)
         subset.pop()
