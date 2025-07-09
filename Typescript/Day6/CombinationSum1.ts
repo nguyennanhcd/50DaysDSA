@@ -21,3 +21,30 @@ Explanation:
 These are the only two combinations.
 
 */
+
+function combinationSum1(candidates:number[],  target: number):number[][] {
+	let result:number[][] = []
+
+	function backtrack(index:number, curr: number[], currSum:number){
+		if (currSum > target) {
+			return
+		}
+
+		if (currSum == target) {
+			result.push([...curr])
+			return
+		}
+
+		for (let j: number = index; j< candidates.length; j ++ ) {
+			curr.push(candidates[j])
+			backtrack(j, curr, currSum+candidates[j])
+			curr.pop()
+		}
+	}
+
+	backtrack(0,[],0)
+	return result
+}
+
+const result = combinationSum1([2,3,8,9], 9)
+console.log(result)
